@@ -28,6 +28,9 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
                                             </button>
+                                            <connections>
+                                                <action selector="shareButton:" destination="BYZ-38-t0r" id="vbb-mI-v48"/>
+                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="vXv-jC-DEL">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="x8D-Mn-8mR">
@@ -35,6 +38,9 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelToShareMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D0Q-3e-U5T"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
@@ -75,6 +81,24 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="topTextField" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="edk-do-xWj">
+                                <rect key="frame" x="23" y="132" width="354" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="topTextField:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="7V0-1b-n6g"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="bottomTextField" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kb0-r6-2SJ">
+                                <rect key="frame" x="23" y="658" width="370" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="bottomTextField:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="v3A-IV-j9F"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -90,7 +114,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="AlbumButton" destination="xUF-Hu-cph" id="mul-wl-uAq"/>
+                        <outlet property="bottomTextField" destination="kb0-r6-2SJ" id="ixW-wv-zhs"/>
+                        <outlet property="cameraButton" destination="xUF-Hu-cph" id="rL1-CR-FY9"/>
+                        <outlet property="cancelButton" destination="vXv-jC-DEL" id="wG3-VG-knq"/>
+                        <outlet property="imagePickerView" destination="Ukl-iE-9fn" id="EGh-cd-y7z"/>
                         <outlet property="imagepickerView" destination="Ukl-iE-9fn" id="QId-eH-F2w"/>
+                        <outlet property="shareButton" destination="xq5-yz-hi1" id="wOD-n9-vbS"/>
+                        <outlet property="topTextField" destination="edk-do-xWj" id="lX2-Do-WbK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
