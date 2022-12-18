@@ -88,7 +88,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         let sharedImage = generateMemedImage()
         let controller = UIActivityViewController(activityItems: [sharedImage], applicationActivities: nil)
         // !!!! DELETE this
-        self.present(controller, animated: true, completion: nil)
         controller.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
             if completed && error == nil {
                 self.save()

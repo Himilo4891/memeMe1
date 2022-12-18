@@ -27,6 +27,9 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
+                                                <connections>
+                                                    <action selector="shareAnImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VPE-bI-4ca"/>
+                                                </connections>
                                             </button>
                                             <connections>
                                                 <action selector="shareButton:" destination="BYZ-38-t0r" id="vbb-mI-v48"/>
