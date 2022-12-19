@@ -10,24 +10,24 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate,
                       UINavigationControllerDelegate, UITextFieldDelegate   {
     
-    @IBOutlet weak var imagepickerView: UIImageView!
-    var selectedImage: String?
-    var pictures = [String]()
-
-//    override func viewDidload() {
-//        super.viewDidload()
-//        prepareTextField(textField: textTop, defaultText: "TOP" )
-//        prepareTextField(textField: textBottom, defaultText: "BOTTOM")
-//        shareButton.isEnabled = true
-//    }
+//    @IBOutlet weak var imagepickerView: UIImageView!
+//    var selectedImage: String?
+//    var pictures = [String]()
+    
+    //    override func viewDidload() {
+    //        super.viewDidload()
+    //        prepareTextField(textField: textTop, defaultText: "TOP" )
+    //        prepareTextField(textField: textBottom, defaultText: "BOTTOM")
+    //        shareButton.isEnabled = true
+    //    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        //        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyBoardNotifications()
         shareButton.isEnabled = false
     }
     
-  
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -50,11 +50,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBOutlet weak var topTextField: UITextField!
     
+    @IBOutlet weak var navbar: UINavigationBar!
     @IBOutlet weak var bottomTextField: UITextField!
     
     @IBOutlet weak var imagePickerView: UIImageView!
     
-    @IBOutlet weak var cameraButton: UIToolbar!
+    @IBOutlet weak var pickAnImageFromCamera: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -77,11 +78,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         
         let pickerController = UIImagePickerController()
-            pickerController.delegate = self
-            pickerController.sourceType = .camera
-            pickerController.allowsEditing = true
-            present(pickerController, animated: true, completion: nil)
-          }
+        pickerController.delegate = self
+        pickerController.sourceType = .camera
+        pickerController.allowsEditing = true
+        present(pickerController, animated: true, completion: nil)
+        
+        
+        
+    }
     
     @IBAction func shareAnImage(_ sender: Any) {
         
@@ -97,37 +101,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         present(controller,animated: true, completion: nil)
     }
     @IBAction func cancelToShareMeme(_ sender: Any) {
-         leaveMemeInBetween()
-     }
-     //To clear texts up on touch
-     @IBAction func topTextField(_ sender: Any) {
-         textFieldDidBeginEditing(topTextField)
-     }
-     
-     @IBAction func bottomTextField(_ sender: Any) {
-         textFieldDidBeginEditing(bottomTextField)
-     }
+        leaveMemeInBetween()
+    }
+    //To clear texts up on touch
+    @IBAction func topTextField(_ sender: Any) {
+        textFieldDidBeginEditing(topTextField)
+    }
+    
+    @IBAction func bottomTextField(_ sender: Any) {
+        textFieldDidBeginEditing(bottomTextField)
+    }
     func chooseImageFromCameraOrPhoto(source: UIImagePickerController.SourceType) {
-           let pickerController = UIImagePickerController()
-           pickerController.delegate = self
-           pickerController.allowsEditing = true
-           pickerController.sourceType = source
-           present(pickerController, animated: true, completion: nil)
-       }
-       //CONTROLS ON IMAGE
-       func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-           print("Image selected")
-           if let image = info[.originalImage] as? UIImage {
-               imagePickerView.image = image
-               
-           }
-//           else if let editedImage = info[.editedImage] as? UIImage {
-//               imagePickerView.image = editedImage
-//           }
-              shareButton.isEnabled = true
-           print("share button action is active")
-           dismiss(animated: true, completion: nil)
-       
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.sourceType = source
+        present(pickerController, animated: true, completion: nil)
+    }
+    //CONTROLS ON IMAGE
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("Image selected")
+        if let image = info[.originalImage] as? UIImage {
+            imagePickerView.image = image
+            
+        }
+        
+        shareButton.isEnabled = true
+        print("share button action is active")
+        dismiss(animated: true, completion: nil)
+
+
        }
        //IF Image picking is cancelled
        func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
