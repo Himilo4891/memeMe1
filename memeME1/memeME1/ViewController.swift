@@ -14,12 +14,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
 //    var selectedImage: String?
 //    var pictures = [String]()
     
-    //    override func viewDidload() {
-    //        super.viewDidload()
-    //        prepareTextField(textField: textTop, defaultText: "TOP" )
-    //        prepareTextField(textField: textBottom, defaultText: "BOTTOM")
-    //        shareButton.isEnabled = true
-    //    }
+       
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -49,18 +44,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBOutlet weak var topTextField: UITextField!
-    
     @IBOutlet weak var navbar: UINavigationBar!
     @IBOutlet weak var bottomTextField: UITextField!
-    
     @IBOutlet weak var imagePickerView: UIImageView!
-    
     @IBOutlet weak var pickAnImageFromCamera: UIToolbar!
+   @IBOutlet weak var AlbumButton: UIButton!
     @IBOutlet weak var shareButton: UIBarButtonItem!
-    
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var ToolBar: UIToolbar!
+ 
     
-    @IBOutlet weak var AlbumButton: UIToolbar!
     
     @IBAction func pickAnImage(_ sender: Any) {
         let imagePicker = UIImagePickerController()
@@ -111,13 +104,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func bottomTextField(_ sender: Any) {
         textFieldDidBeginEditing(bottomTextField)
     }
-    func chooseImageFromCameraOrPhoto(source: UIImagePickerController.SourceType) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.allowsEditing = true
-        pickerController.sourceType = source
-        present(pickerController, animated: true, completion: nil)
-    }
+//    func chooseImageFromCameraOrPhoto(source: UIImagePickerController.SourceType) {
+//        let pickerController = UIImagePickerController()
+//        pickerController.delegate = self
+//        pickerController.allowsEditing = true
+//        pickerController.sourceType = source
+//        present(pickerController, animated: true, completion: nil)
+//    }
     //CONTROLS ON IMAGE
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print("Image selected")
