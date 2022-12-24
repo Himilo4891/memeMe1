@@ -6,20 +6,21 @@
 //
 
 import UIKit
-
 class ViewController: UIViewController, UIImagePickerControllerDelegate,
                       UINavigationControllerDelegate, UITextFieldDelegate   {
     
-//    @IBOutlet weak var imagepickerView: UIImageView!
-//    var selectedImage: String?
-//    var pictures = [String]()
+
     
        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyBoardNotifications()
         shareButton.isEnabled = false
+//#if targetEnvironment(simulator)
+//    cameraButton.isEnabled = false;
+//#else
+//    cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera);
+//#endif
     }
     
     
@@ -27,6 +28,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unSubscribeToKeyBoardNotifications()
+        
     }
     override func viewDidLoad() {
         
@@ -40,45 +42,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         self.bottomTextField.textAlignment = .center
         self.topTextField.text = "TOP"
         self.bottomTextField.text = "BOTTOM"
-        shareButton.isEnabled = false
+        shareButton.isEnabled = true
     }
     
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var navbar: UINavigationBar!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imagePickerView: UIImageView!
-    @IBOutlet weak var pickAnImageFromCamera: UIToolbar!
-   @IBOutlet weak var AlbumButton: UIButton!
+    @IBOutlet weak var camerButton: UIButton!
+    
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var AlbumButton: UIButton!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var ToolBar: UIToolbar!
- 
-    
-    
-    @IBAction func pickAnImage(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
-    }
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .photoLibrary
-        pickerController.allowsEditing = true
-        present(pickerController, animated: true, completion: nil)
+        pickAnImage(UIImagePickerController.SourceType.photoLibrary)
     }
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         
+       
+        pickAnImage(UIImagePickerController.SourceType.camera)
+
+     
+        }
+    func pickAnImage(_ source: UIImagePickerController.SourceType) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
-        pickerController.sourceType = .camera
-        pickerController.allowsEditing = true
+        pickerController.sourceType = source
         present(pickerController, animated: true, completion: nil)
-        
-        
-        
     }
+   
     
     @IBAction func shareAnImage(_ sender: Any) {
         
@@ -112,6 +106,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
 //        present(pickerController, animated: true, completion: nil)
 //    }
     //CONTROLS ON IMAGE
+//    func viewWillAppear(){
+//        if cameraButton.isEnabled{
+//            cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+//
+//        }else{
+//            print(dismiss(animated: true, completion: nil))
+//        }
+//
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print("Image selected")
         if let image = info[.originalImage] as? UIImage {
@@ -211,10 +214,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
            initialState()
        }
       
-       func initialState(){
-           topTextField.text = "TOP"
-           bottomTextField.text = "BOTTOM"
-           imagePickerView.image = nil
-       }
+    func initialState(){
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        imagePickerView.image = nil
+    }
+
    }
+
 
