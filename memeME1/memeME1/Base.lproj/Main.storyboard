@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="88" width="430" height="781"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nll-N1-LkG">
-                                <rect key="frame" x="0.0" y="42" width="430" height="0.0"/>
+                                <rect key="frame" x="0.0" y="42" width="430" height="44"/>
                                 <items>
                                     <navigationItem id="g85-tD-fUm">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="xq5-yz-hi1">
@@ -108,7 +108,6 @@
                             <constraint firstItem="edk-do-xWj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="43" id="Dtv-3e-X3o"/>
                             <constraint firstItem="kb0-r6-2SJ" firstAttribute="top" secondItem="edk-do-xWj" secondAttribute="bottom" constant="598" id="Fxh-0v-rWs"/>
                             <constraint firstItem="xUF-Hu-cph" firstAttribute="top" secondItem="Ukl-iE-9fn" secondAttribute="bottom" id="KYz-ga-llQ"/>
-                            <constraint firstItem="Ukl-iE-9fn" firstAttribute="top" secondItem="nll-N1-LkG" secondAttribute="bottom" constant="46" id="OE5-Fe-Z3O"/>
                             <constraint firstItem="nll-N1-LkG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="42" id="TEL-ez-IG1"/>
                             <constraint firstItem="edk-do-xWj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="105" id="Ulu-Kw-Pc6"/>
                             <constraint firstItem="kb0-r6-2SJ" firstAttribute="top" secondItem="edk-do-xWj" secondAttribute="bottom" constant="598" id="Xu2-Sa-3i7"/>

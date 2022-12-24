@@ -15,12 +15,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyBoardNotifications()
-        shareButton.isEnabled = false
-//#if targetEnvironment(simulator)
-//    cameraButton.isEnabled = false;
-//#else
-//    cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera);
-//#endif
+  
     }
     
     
@@ -32,6 +27,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     override func viewDidLoad() {
         
+        
         self.topTextField.delegate = self
         self.bottomTextField.delegate = self
         //setting text properties form dictionary
@@ -42,7 +38,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         self.bottomTextField.textAlignment = .center
         self.topTextField.text = "TOP"
         self.bottomTextField.text = "BOTTOM"
-        shareButton.isEnabled = true
+        prepareTextField(textField: topTextField, defaultText:"TOP")
+        prepareTextField(textField: bottomTextField, defaultText:"BOTTOM")
+        shareButton.isEnabled = false
+        #if targetEnvironment(simulator)
+         camerButton.isEnabled = false
+        #else
+           cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera);
+#endif
     }
     
     @IBOutlet weak var topTextField: UITextField!
@@ -60,12 +63,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         pickAnImage(UIImagePickerController.SourceType.photoLibrary)
     }
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        
        
         pickAnImage(UIImagePickerController.SourceType.camera)
+        func pickImage(sourceType: UIImagePickerController.SourceType){
+            
+        }
 
      
         }
+    
+    func prepareTextField(textField: UITextField, defaultText: String) {
+//        textField.defaultTextAttributes = ...…..
+        
+    }
+    
     func pickAnImage(_ source: UIImagePickerController.SourceType) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
@@ -98,22 +109,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func bottomTextField(_ sender: Any) {
         textFieldDidBeginEditing(bottomTextField)
     }
-//    func chooseImageFromCameraOrPhoto(source: UIImagePickerController.SourceType) {
-//        let pickerController = UIImagePickerController()
-//        pickerController.delegate = self
-//        pickerController.allowsEditing = true
-//        pickerController.sourceType = source
-//        present(pickerController, animated: true, completion: nil)
-//    }
-    //CONTROLS ON IMAGE
-//    func viewWillAppear(){
-//        if cameraButton.isEnabled{
-//            cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-//
-//        }else{
-//            print(dismiss(animated: true, completion: nil))
-//        }
-//
+
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print("Image selected")
@@ -154,11 +150,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
        
        //Key board settings
        @objc func keyboardWillShow(_ notification:Notification){
-           view.frame.origin.y -=  getKeyboardHeight(notification)
+           view.frame.origin.y = -getKeyboardHeight(notification)
+
        }
-       @objc func keyboardWillHide(_ notification:Notification){
-           view.frame.origin.y = 0
-       }
+    @objc func keyboardWillHide(_ notification:Notification){
+        if bottomTextField.isFirstResponder{
+            view.frame.origin.y = 0
+        }
+    }
        func getKeyboardHeight(_ notification:Notification) -> CGFloat{
            let userInfo = notification.userInfo
            let keyBoardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
