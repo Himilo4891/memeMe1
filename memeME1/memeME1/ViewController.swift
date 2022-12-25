@@ -30,6 +30,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         
         self.topTextField.delegate = self
         self.bottomTextField.delegate = self
+        func setupTextField(textField: UITextField, text: String) {
+            //
+        }
         //setting text properties form dictionary
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
@@ -158,7 +161,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
             view.frame.origin.y = 0
         }
     }
-       func getKeyboardHeight(_ notification:Notification) -> CGFloat{
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat{
+     
            let userInfo = notification.userInfo
            let keyBoardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
            return keyBoardSize.cgRectValue.height
@@ -181,7 +185,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
                            memedImage: generateMemedImage())
        }
 
-       struct Meme {
+    struct Meme {
            let topText:String
            let bottomText:String
            let originalImage:UIImage
@@ -192,6 +196,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
        func generateMemedImage() -> UIImage {
            //Hide tab and nav bars
            self.navigationController?.navigationBar.isHidden = true;
+
            self.tabBarController?.tabBar.isHidden = true;
            // Render view to an image
            UIGraphicsBeginImageContext(self.view.frame.size)
