@@ -55,7 +55,7 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="bottomTextField" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="kb0-r6-2SJ">
-                                <rect key="frame" x="11" y="796" width="394" height="34"/>
+                                <rect key="frame" x="15" y="796" width="394" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -64,38 +64,43 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="topTextField" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="edk-do-xWj">
-                                <rect key="frame" x="43" y="164" width="362" height="34"/>
+                                <rect key="frame" x="43" y="164" width="366" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="topTextField:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="HIu-hW-xdp"/>
                                 </connections>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="xUF-Hu-cph" userLabel="ToolBar">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nY4-Xf-aZu">
                                 <rect key="frame" x="0.0" y="869" width="430" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <barButtonItem style="plain" id="Uur-Wd-LrD">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="vGM-Q6-Mva" userLabel="cameraButton">
+                                    <barButtonItem style="plain" id="EBM-Wl-zN9">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="SM6-Xp-OjU" userLabel="cameraButton">
                                             <rect key="frame" x="20" y="9" width="83" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" image="camera.fill" catalog="system"/>
                                             <connections>
-                                                <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FcC-fx-XC4"/>
+                                                <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Svq-co-WwF"/>
                                             </connections>
                                         </button>
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="Q9V-wX-LpU"/>
+                                        </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" id="yn9-aL-IVM">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nhV-qb-bqo">
+                                    <barButtonItem style="plain" id="g0O-MQ-xxK">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="3Su-Q4-zb4">
                                             <rect key="frame" x="169" y="9.6666666666666643" width="241" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="Album"/>
                                             <connections>
-                                                <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kmz-C1-oZE"/>
+                                                <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rIj-q9-dhf"/>
                                             </connections>
                                         </button>
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="yY0-OR-xnN"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
@@ -103,11 +108,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="xUF-Hu-cph" firstAttribute="top" secondItem="Ukl-iE-9fn" secondAttribute="bottom" id="1FT-Yb-OOE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ukl-iE-9fn" secondAttribute="bottom" constant="29" id="AGB-vs-m7T"/>
+                            <constraint firstAttribute="bottom" secondItem="nY4-Xf-aZu" secondAttribute="bottom" constant="14" id="CTj-wF-ArJ"/>
                             <constraint firstItem="Ukl-iE-9fn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="D2c-lW-d29"/>
                             <constraint firstItem="edk-do-xWj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="43" id="Dtv-3e-X3o"/>
                             <constraint firstItem="kb0-r6-2SJ" firstAttribute="top" secondItem="edk-do-xWj" secondAttribute="bottom" constant="598" id="Fxh-0v-rWs"/>
-                            <constraint firstItem="xUF-Hu-cph" firstAttribute="top" secondItem="Ukl-iE-9fn" secondAttribute="bottom" id="KYz-ga-llQ"/>
+                            <constraint firstItem="nY4-Xf-aZu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ORs-1A-Gp9"/>
                             <constraint firstItem="nll-N1-LkG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="42" id="TEL-ez-IG1"/>
                             <constraint firstItem="edk-do-xWj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="105" id="Ulu-Kw-Pc6"/>
                             <constraint firstItem="kb0-r6-2SJ" firstAttribute="top" secondItem="edk-do-xWj" secondAttribute="bottom" constant="598" id="Xu2-Sa-3i7"/>
@@ -115,16 +121,17 @@
                             <constraint firstItem="Ukl-iE-9fn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gGg-3A-Wj5"/>
                             <constraint firstAttribute="trailing" secondItem="Ukl-iE-9fn" secondAttribute="trailing" id="gqy-61-jkf"/>
                             <constraint firstItem="nll-N1-LkG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hfb-AQ-BI4"/>
+                            <constraint firstItem="nY4-Xf-aZu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="nsK-pZ-93U"/>
                             <constraint firstItem="edk-do-xWj" firstAttribute="trailing" secondItem="kb0-r6-2SJ" secondAttribute="trailing" id="u9s-Ny-cHI"/>
                             <constraint firstItem="Ukl-iE-9fn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vvA-HI-lvu"/>
                             <constraint firstItem="nll-N1-LkG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xBl-uw-7Am"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="AlbumButton" destination="nhV-qb-bqo" id="p6l-AV-c1G"/>
-                        <outlet property="ToolBar" destination="xUF-Hu-cph" id="RdP-Jc-lYm"/>
+                        <outlet property="AlbumButton" destination="g0O-MQ-xxK" id="2YS-Qu-fV5"/>
+                        <outlet property="ToolBar" destination="nY4-Xf-aZu" id="5Xb-kv-M7b"/>
                         <outlet property="bottomTextField" destination="kb0-r6-2SJ" id="pQE-lt-YAJ"/>
-                        <outlet property="camerButton" destination="vGM-Q6-Mva" id="Bvj-Z6-KzQ"/>
+                        <outlet property="camerButton" destination="EBM-Wl-zN9" id="T7Q-kn-Mj1"/>
                         <outlet property="cancelButton" destination="vXv-jC-DEL" id="dHj-oe-hUm"/>
                         <outlet property="imagePickerView" destination="Ukl-iE-9fn" id="x1D-Os-hW3"/>
                         <outlet property="navbar" destination="nll-N1-LkG" id="3Tn-f5-7zy"/>

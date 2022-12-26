@@ -45,7 +45,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         prepareTextField(textField: bottomTextField, defaultText:"BOTTOM")
         shareButton.isEnabled = false
         #if targetEnvironment(simulator)
-         camerButton.isEnabled = false
+        camerButton.isEnabled = false
         #else
            cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera);
 #endif
@@ -55,10 +55,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var navbar: UINavigationBar!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imagePickerView: UIImageView!
-    @IBOutlet weak var camerButton: UIButton!
+    @IBOutlet weak var camerButton: UIBarButtonItem!
     
     @IBOutlet weak var shareButton: UIBarButtonItem!
-    @IBOutlet weak var AlbumButton: UIButton!
+    @IBOutlet weak var AlbumButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var ToolBar: UIToolbar!
     
