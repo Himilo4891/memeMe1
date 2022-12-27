@@ -8,17 +8,12 @@
 import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate,
                       UINavigationControllerDelegate, UITextFieldDelegate   {
-    
 
-    
-       
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyBoardNotifications()
   
     }
-    
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -26,29 +21,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         
     }
     override func viewDidLoad() {
-        
-        
-        self.topTextField.delegate = self
-        self.bottomTextField.delegate = self
-        func setupTextField(textField: UITextField, text: String) {
-            //
-        }
+        super.viewDidLoad()
+        topTextField.textAlignment = .center
+        bottomTextField.textAlignment = .center
+        topTextField.delegate = self
+        bottomTextField.delegate = self
+//        func setupTextField(textField: UITextField, text: String) {
+//        }
         //setting text properties form dictionary
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
+//        topTextField.defaultTextAttributes = memeTextAttributes
+//        bottomTextField.defaultTextAttributes = memeTextAttributes
         //text alignemnet to center
-        self.topTextField.textAlignment = .center
-        self.bottomTextField.textAlignment = .center
-        self.topTextField.text = "TOP"
-        self.bottomTextField.text = "BOTTOM"
+       
+//        self.topTextField.text = "TOP"
+//        self.bottomTextField.text = "BOTTOM"
         prepareTextField(textField: topTextField, defaultText:"TOP")
         prepareTextField(textField: bottomTextField, defaultText:"BOTTOM")
-        shareButton.isEnabled = false
+        shareButton.isEnabled = true
         #if targetEnvironment(simulator)
         camerButton.isEnabled = false
         #else
            cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera);
-#endif
+        #endif
     }
     
     @IBOutlet weak var topTextField: UITextField!
@@ -76,8 +70,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     
     func prepareTextField(textField: UITextField, defaultText: String) {
-//        textField.defaultTextAttributes = ...…..
-        
+        textField.delegate = self
+        textField.textAlignment = .center
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.text = defaultText
     }
     
     func pickAnImage(_ source: UIImagePickerController.SourceType) {
@@ -112,20 +108,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func bottomTextField(_ sender: Any) {
         textFieldDidBeginEditing(bottomTextField)
     }
-
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print("Image selected")
         if let image = info[.originalImage] as? UIImage {
             imagePickerView.image = image
-            
         }
-        
         shareButton.isEnabled = true
         print("share button action is active")
         dismiss(animated: true, completion: nil)
-
-
        }
        //IF Image picking is cancelled
        func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
@@ -153,14 +143,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
        
        //Key board settings
        @objc func keyboardWillShow(_ notification:Notification){
-           view.frame.origin.y = -getKeyboardHeight(notification)
-
+           if bottomTextField.isFirstResponder{
+               view.frame.origin.y = -getKeyboardHeight(notification)
+           }
        }
+        
     @objc func keyboardWillHide(_ notification:Notification){
-        if bottomTextField.isFirstResponder{
-            view.frame.origin.y = 0
+        view.frame.origin.y = 0
         }
-    }
+   
     func getKeyboardHeight(_ notification:Notification) -> CGFloat{
      
            let userInfo = notification.userInfo
@@ -225,5 +216,3 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 
    }
-
-
