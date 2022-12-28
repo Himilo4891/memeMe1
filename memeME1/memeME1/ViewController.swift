@@ -22,21 +22,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        topTextField.textAlignment = .center
-        bottomTextField.textAlignment = .center
-        topTextField.delegate = self
-        bottomTextField.delegate = self
-//        func setupTextField(textField: UITextField, text: String) {
-//        }
-        //setting text properties form dictionary
-//        topTextField.defaultTextAttributes = memeTextAttributes
-//        bottomTextField.defaultTextAttributes = memeTextAttributes
-        //text alignemnet to center
-       
-//        self.topTextField.text = "TOP"
-//        self.bottomTextField.text = "BOTTOM"
         prepareTextField(textField: topTextField, defaultText:"TOP")
         prepareTextField(textField: bottomTextField, defaultText:"BOTTOM")
+        topTextField.textAlignment = .center
+        bottomTextField.textAlignment = .center
         shareButton.isEnabled = true
         #if targetEnvironment(simulator)
         camerButton.isEnabled = false
@@ -44,17 +33,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
            cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera);
         #endif
     }
-    
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var navbar: UINavigationBar!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var camerButton: UIBarButtonItem!
-    
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var AlbumButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var ToolBar: UIToolbar!
+    
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
         pickAnImage(UIImagePickerController.SourceType.photoLibrary)
@@ -62,11 +50,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
        
         pickAnImage(UIImagePickerController.SourceType.camera)
-        func pickImage(sourceType: UIImagePickerController.SourceType){
-            
-        }
-
-     
         }
     
     func prepareTextField(textField: UITextField, defaultText: String) {
@@ -103,6 +86,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     //To clear texts up on touch
     @IBAction func topTextField(_ sender: Any) {
         textFieldDidBeginEditing(topTextField)
+        
+
     }
     
     @IBAction func bottomTextField(_ sender: Any) {
